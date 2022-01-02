@@ -1,0 +1,69 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+
+    ul {
+
+        #title {
+            background: #ccffff;
+            display: grid;
+            place-items: center;
+            margin: 1rem 0 0 0;
+            height: 4rem;
+            width: 10rem;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            cursor: pointer;
+            font-size: 2rem;
+            font-family: cursive, monospace, sans-serif;
+            list-style: none;
+
+            &:hover + .dropmenu li {
+
+                @for $i from 1 through 5 {
+                    &:nth-child(#{$i}) {
+                        animation: dropDown 300ms (400ms * $i) - 300 ease-in-out forwards;
+                    }
+                }
+            }
+        }
+
+
+        .dropmenu {
+            perspective: 1000px;
+
+            li {
+                pointer-events: none;
+                transform-origin: top center;
+                opacity: 0;
+                background: #ffcccc;
+                display: grid;
+                place-items: center;
+                height: 4rem;
+                width: 10rem;
+                cursor: pointer;
+                font-size: 1.5rem;
+                font-family: cursive, monospace, sans-serif;
+                list-style: none;
+            }
+        }
+    }
+}
+
+
+
+@keyframes dropDown {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg)
+    }
+
+    50% {
+        transform: rotateX(50deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg)
+    }
+}
